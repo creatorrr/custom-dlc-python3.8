@@ -35,8 +35,9 @@ RUN \
 
 # Create custom 3.8 kernel
 RUN \
-    conda install python=3.8 \
-    && ipython kernel install --name "Python3.8" --prefix $HOME/.py38env
+    ipython kernel install --name "Python3.8" --prefix $HOME/.py38env \
+    && . $HOME/.py38env/bin/activate \
+    && ipython kernel install --name "Python3.8-user" --user
 
 # Clean up apt
 RUN \
